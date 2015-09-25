@@ -19,15 +19,17 @@ def index():
 		degree = str((weather_dict.get("main").get("temp")) * 9/5 - 459.67 )
 		response = "The weather for San Francisco right now is: " +  degree + " degrees fahrenheit"
 		response = payload={"text": "The weather for San Francisco right now is: " +  degree + " degrees fahrenheit" }
-	
+		
 	elif request.values.get('trigger_word') == "hello":
+		# simple response showing basic functionality of responding back to web-hook
 		response = payload={"text": "Hi to you too!"}
 
 	elif request.values.get('trigger_word') == "tengo":
+		# you can change the username and user picture through payload object
 		response = payload={"text": "yo tambien...", "username": "friendly-neighborhood-bot-man", "icon_emoji": ":turtle:"}
 	
 	else: 
-		response = payload={"text": "Hi to you too!"}
+		response = payload={"text": "Hi! This is not connected to Slack right now"}
 
 	return jsonify(response)
 
